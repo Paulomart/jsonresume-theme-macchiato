@@ -3,13 +3,15 @@ const handlebars = require('handlebars');
 const handlebarsWax = require('handlebars-wax');
 const moment = require('moment');
 
+moment.locale('de');
+
 handlebars.registerHelper({
   removeProtocol: url => url.replace(/.*?:\/\//g, ''),
   concat: (...args) => args.filter(arg => typeof arg !== 'object').join(''),
   // Arguments: {address, city, subdivision, postalCode, countryCode}
   // formatAddress: (...args) => addressFormat(args).join(' '),
   formatAddress: (...args) => args.filter(arg => typeof arg !== 'object').join(' '),
-  formatDate: date => moment(date).format('MM/YYYY'),
+  formatDate: date => moment(date).format('MMMM YYYY'),
   lowercase: s => s.toLowerCase(),
   eq: (a, b) => a === b,
 });
